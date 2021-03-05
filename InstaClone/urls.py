@@ -18,11 +18,17 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from website import views
+from user.views import user_profile
 
 
 urlpatterns = [
     path('', views.index, name = "index"),
     path('admin/', admin.site.urls),
+    path('kullanıcı/', include("user.urls")),
+    path('gönderi/', include("post.urls")),
+    path('kullanıcı/<str:username>/', user_profile, name = "profile"),
+    path('ara/', views.search, name = "search"),
+    path('keşfet/', views.explore, name = "explore"),
 ]
 
 if settings.DEBUG:
