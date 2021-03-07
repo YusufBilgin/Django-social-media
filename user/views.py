@@ -13,6 +13,10 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, HttpResponse, HttpResponseRedirect
 
 
+def all_users(request):
+    pass
+
+
 def register_user(request):
     form = RegisterForm(request.POST or None)
 
