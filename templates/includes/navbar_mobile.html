@@ -1,0 +1,16 @@
+<div class="py-1 mobil-nav">
+
+    <div class="container">
+        <a href="{% url 'index' %}" class="mx-4 text-secondary">
+            <i class="fas fa-home fa-2x"></i>
+        </a>
+
+        <a href="{% url 'explore' %}" class="mx-4 text-secondary">
+            <i class="fas fa-compass fa-2x"></i>
+        </a>
+
+        <a href="{% url 'user:profile' request.user.username %} " class="mx-4 text-secondary">
+            <i class="fas fa-user-circle fa-2x"></i>
+        </a>
+    </div>
+</div>
