@@ -1,0 +1,88 @@
+<nav style="background-color: #282A34;" class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top">
+    <div class="container">
+        <a class="navbar-brand mb-0 h1" href="{% url 'index' %}">
+            Insta Clone
+        </a>
+        <center>
+            <form class="form-inline" method="POST" action="{% url 'search' %}" id="search-form">
+                {% csrf_token %}
+                <input name="keyword"  style="width: 250px;" class="form-control form-control-sm mr-sm-2" placeholder="Ara" required>
+                &nbsp;
+                <a class="text-secondary" href="javascript:{}" onclick="document.getElementById('search-form').submit();">
+                    <i class="fas fa-search fa-lg"></i>
+                </a>
+            </form>
+        </center>
+
+        <left>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="{% url 'index' %}">
+                            <i class="fas fa-home fa-2x"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="{% url 'explore' %}">
+                            <i class="fas fa-compass fa-2x"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="" 
+                            data-toggle="modal"
+                            data-target="#Modal"
+                            type="button">
+                            {% if messages %}
+                                <i id="mektup" class="fas fa-envelope fa-2x text-danger"></i>
+                            {% else %}
+                                <i class="fas fa-envelope fa-2x"></i>
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="{% url 'user:profile' request.user.username %}">
+                            <i class="fas fa-user-circle fa-2x"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </left>
+    </div>
+</nav>
+
+<div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Bildirimler</h5>
+                <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close" id="close_bildirim_panel">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="message-box">
+                {% if messages %}
+                    {% for message in messages %}
+
+                        {% if message.tags == "error" %}
+                            <div class="alert alert-danger alert-dismissible fade show bildirim" role="alert">
+                                <!-- <strong>Bildirim Basligi nah burasi!</strong> --> {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show bildirim" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endif %}
+                    
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</div>
