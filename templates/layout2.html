@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="tr">
+<head>
+    <!-- Meta etiketleri -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block meta %}
+        
+    {% endblock meta %}
+
+    <!-- Sayfa iconu -->
+    <link rel="shortcut icon" href="#">
+    
+    <title>
+        {% block baslik %}
+
+        {% endblock baslik %}
+    </title>
+
+    <!-- CSS Kütüphaneleri -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap-4.4.1.min.css' %}">
+
+    <!-- Fontlar -->
+
+
+    <!-- Javascript dosyalari -->
+    <script src="{% static 'js/fontawesome.js' %}" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background-color: #3C3F51;
+            color: white;
+        }
+
+        {% block style %}
+
+        {% endblock style %}
+    </style>
+
+</head>
+<body>
+
+
+    {% block body %}
+        
+    {% endblock body %}
+
+
+    <!-- Scripts -->
+    <script src="{% static 'js/jquery-3.5.1.min.js' %}"> </script>
+    <script src="{% static 'js/bootstrap-4.4.1.min.js' %}"> </script>
+
+    {% block Javascript %}
+
+    {% endblock Javascript %}
+</body>
+</html>
